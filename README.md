@@ -5,13 +5,13 @@ Implementations of classic data structures in Python built from scratch for lear
 This repository contains clean implementations, examples, and complexity analysis for fundamental data structures used in computer science.
 
 ## Implemented 
-
-## Next Structure
 - Abstract Data Types
 (ADT)
 
-## Planned
+## Next Structure
 - Stacks
+
+## Planned
 - Queues
 - Linear Lists
 - Sorted Linear Lists
