@@ -2,8 +2,10 @@ class Bag:
     def __init__(self, CAPACITY: int) -> None:
         # precondition: None
         # postcondition: The Bag starts empty
+
         self.CAPACITY: int = CAPACITY
         self.data: list[int] = []
+        self.used: int = 0
 
     def insert(self, new_entry: int) -> None:
         # precondition: Bag is not full
@@ -13,31 +15,43 @@ class Bag:
             print("The bag is full!")
             return
 
-        self.data.append(new_entry)
+        self.used += 1
+        self.data.insert(self.used, new_entry)
 
     def occurrence(self, entry: int) -> int:
         # precondition: None
         # postcondition: Returns the number of occurrences of the entry element in the Bag
         
-        return self.data.count(entry)
+        total: int = 0
+        for element in self.data:
+            if element == entry:
+                total += 1
+        
+        return total
     
     def remove(self, entry: int) -> None:
         # precondition: None
         # postcondition: Removes an occurrence of the entry element from the Bag. If the element does not exist, the Bag remains unchanged
         
-        self.data.remove(entry)
+        index: int = 0
+        for i, element in enumerate(self.data):
+            if element == entry:
+                index = i
+        
+        self.used -= 1
+        self.data.pop(index)
     
     def full(self) -> bool:
         # precondition: None
         # postcondition: Returns true if the Bag is full; false otherwise
         
-        return len(self.data) == self.CAPACITY
+        return self.used == self.CAPACITY
 
     def size(self) -> int:
         # precondition: None
         # postcondition: Returns the number of items in the Bag
         
-        return len(self.data)
+        return self.used
 
     def print_bag(self) -> None:
         # precondition: None
